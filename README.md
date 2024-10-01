@@ -1,12 +1,6 @@
 # 💫 About Me:
 I am a newly graduate at Karabük University. I created websites using Laravel, Django, Django REST and React frameworks. <br>Regarding Back-End technologies, I used MVC, MVT and MVVM structures, MySQL,SQLite, MongoDB databases. <br>In Front-End technologies, I worked with both function-based and classbased components of React, and also developed HTML and CSS-based projects.<br>I am currenty working on .Net and React.
 
-# Welcome to My Project
-
-Here's some cool dynamic content:
-
-<!-- dynamic-text -->
-
 ## 🌐 Socials:
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/honeyfphoenix) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/hanifi-demir/) 
 
