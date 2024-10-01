@@ -1,0 +1,30 @@
+name: Update README Text
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # This runs the job every minute.
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Update README
+        run: |
+          texts=("First message" "Second message" "Third message")
+          selected_text=${texts[$(( RANDOM % 3 ))]}
+          echo "Updating README with: $selected_text"
+          
+          # Modify the README.md
+          sed -i "s/<!-- dynamic-text -->/${selected_text}/g" README.md
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git commit -m "Update README text"
+          git push
