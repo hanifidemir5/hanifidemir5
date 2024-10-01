@@ -2,8 +2,8 @@ name: Update README Text
 
 on:
   schedule:
-    - cron: '*/1 * * * *'  # This runs the job every minute.
-  workflow_dispatch:  # Allows manual triggering of the workflow
+    - cron: '*/1 * * * *'
+  workflow_dispatch:
 
 jobs:
   update-readme:
@@ -18,13 +18,21 @@ jobs:
           selected_text=${texts[$(( RANDOM % 3 ))]}
           echo "Updating README with: $selected_text"
           
-          # Modify the README.md
+          # Replace the dynamic text placeholder
           sed -i "s/<!-- dynamic-text -->/${selected_text}/g" README.md
 
-      - name: Commit and Push Changes
+      - name: Set up Git for Commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add README.md
-          git commit -m "Update README text"
+
+      - name: Check for Changes
+        run: |
+          git diff --exit-code || git add README.md
+          git diff --staged --exit-code || git commit -m "Update README text"
+
+      - name: Push Changes
+        run: |
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
